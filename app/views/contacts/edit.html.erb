@@ -1,0 +1,20 @@
+<h1>Edit this contact:</h1>
+<%= form_tag "/contacts/#{@contact.id}/edit", method: :patch do %>
+<div>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name, @contact.first_name %>
+</div>
+<div>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name, @contact.last_name %>
+</div>
+<div>
+  <%= label_tag :phone %>
+  <%= text_field_tag :phone, @contact.phone %>
+</div>
+<div>
+  <%= label_tag :email %>
+  <%= text_field_tag :email, @contact.email %>
+</div>
+<button name="Update" type="submit">Create</button>
+<% end %>
