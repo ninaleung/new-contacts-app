@@ -1,4 +1,12 @@
-<h1>Name: <%= @contact.first_name %> <%= @contact.last_name %></h1>
-<h2>Phone: <%= @contact.phone %></h2>
+<ol class="breadcrumb">
+  <li><a href="/contacts/">All Contacts</a></li>
+  <li class="active"><%= @contact.first_name %></li>
+</ol>
+<h4>Last updated: <%= @contact.readable_updated_on %></h4>
+<h2><a href="/contacts/<%=@contact.id%>/edit">Edit this contact</a></h3>
+<h1>Name: <%= @contact.full_name %></h1>
+<h2>Phone: <%= @contact.japanese_prefix %></h2>
 <h2>Email: <%= @contact.email %></h2>
-<h3><a href="/contacts/<%=@contact.id%>/edit">Edit this contact</a></h3>
+
+<!-- <h3><a href="/contacts/">Back to all contacts</a></h3> -->
+

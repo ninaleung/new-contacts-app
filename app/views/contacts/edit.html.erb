@@ -1,5 +1,10 @@
+<ol class="breadcrumb">
+  <li><a href="/contacts/">All Contacts</a></li>
+  <li><%= link_to "#{@contact.first_name}", "/contacts/#{@contact.id}" %></li>
+  <li class="active">Edit</li>
+</ol>
 <h1>Edit this contact:</h1>
-<%= form_tag "/contacts/#{@contact.id}/edit", method: :patch do %>
+<%= form_tag "/contacts/#{@contact.id}/", method: :patch do %>
 <div>
   <%= label_tag :first_name %>
   <%= text_field_tag :first_name, @contact.first_name %>
@@ -16,5 +21,9 @@
   <%= label_tag :email %>
   <%= text_field_tag :email, @contact.email %>
 </div>
-<button name="Update" type="submit">Create</button>
+<button type="submit">Update</button>
 <% end %>
+
+<p><%= link_to "Delete this contact", "/contacts/#{@contact.id}", method: :delete %></p>
+
+<p><%= link_to "Back to contact page", "/contacts/#{@contact.id}" %></p>

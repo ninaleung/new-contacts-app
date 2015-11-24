@@ -1,7 +1,9 @@
 <h1>Here are your contacts:</h1>
-
+<h4><%= link_to "Create a new contact", "/contacts/new" %></h4>
 <% @contacts.each do |contact| %>
 <h2><%= link_to "#{contact.first_name} #{contact.last_name}", "/contacts/#{contact.id}" %></h2>
-<h3>Phone: <%= contact.phone %></h3>
+<h3>Phone: <%= contact.japanese_prefix %></h3>
 <h3>Email: <%= contact.email %></h3>
 <% end %>
+
+
