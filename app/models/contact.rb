@@ -1,4 +1,6 @@
 class Contact < ActiveRecord::Base
+  belongs_to :user
+
   def readable_updated_on
     updated_at.strftime("%A, %d %b %Y at %l:%M %p")    
   end

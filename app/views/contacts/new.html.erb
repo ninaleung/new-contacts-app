@@ -17,5 +17,8 @@
   <%= label_tag :email %>
   <%= text_field_tag :email %>
 </div>
+<div>
+  <%= hidden_field_tag :user_id, value = current_user.id  %>
+</div>
 <button name="Create" type="submit">Create</button>
 <% end %>

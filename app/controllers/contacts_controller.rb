@@ -1,6 +1,15 @@
 class ContactsController < ApplicationController
+
   def index
-    @contacts = Contact.all
+
+    if user_signed_in?
+      @contacts = current_user.contacts.all
+      render :index
+    else
+      redirect_to "/users/sign_in/"
+    end
+
+    
 
     search_term = params[:search]
     if search_term
@@ -10,6 +19,11 @@ class ContactsController < ApplicationController
   end
 
   def new
+    if user_signed_in?
+      render :new
+    else
+      redirect_to "/users/sign_in/"
+    end
   end
 
   def create
@@ -17,7 +31,8 @@ class ContactsController < ApplicationController
       first_name: params[:first_name],
       last_name: params[:last_name],
       phone: params[:phone],
-      email: params[:email]
+      email: params[:email],
+      user_id: params[:user_id]
       )
     flash[:success] = "Contact successfully created!"
     redirect_to '/contacts'
@@ -25,6 +40,12 @@ class ContactsController < ApplicationController
 
   def show
     @contact = Contact.find_by(id: params[:id])
+
+    if user_signed_in?
+      render :show
+    else
+      redirect_to "/users/sign_in/"
+    end
   end
 
   def edit
