@@ -4,7 +4,6 @@ class ContactsController < ApplicationController
 
     if user_signed_in?
       @contacts = current_user.contacts.all
-      render :index
     else
       redirect_to "/users/sign_in/"
     end
@@ -15,6 +14,12 @@ class ContactsController < ApplicationController
     if search_term
       # @contacts = Contact.where("first_name LIKE ? OR last_name LIKE ?", "%#{search_term}, %#{search_term}%" )
       @contacts = Contact.where("first_name LIKE ? OR last_name LIKE ?", "%#{search_term}%", "%#{search_term}%")
+    end
+    puts "==================="
+    p params[:group]
+    if params[:group]
+      p Group.find_by(name: params[:group])
+      @contacts = Group.find_by(name: params[:group]).contacts
     end
   end
 

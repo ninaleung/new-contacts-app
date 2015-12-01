@@ -1,5 +1,7 @@
 class Contact < ActiveRecord::Base
   belongs_to :user
+  has_many :grouped_contacts
+  has_many :groups, through: :grouped_contacts
 
   def readable_updated_on
     updated_at.strftime("%A, %d %b %Y at %l:%M %p")    

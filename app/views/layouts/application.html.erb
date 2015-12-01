@@ -32,7 +32,9 @@
             <li><a href="/contacts?sort_by=price&sort_order=desc">Name Z to A</a></li>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% Group.all.each do |group| %>
+            <li><a href="/contacts?group=<%= group.name %>"><%= group.name %></a></li>
+            <% end %>
             <li role="separator" class="divider"></li>
             <li><a href="#">One more separated link</a></li>
           </ul>
