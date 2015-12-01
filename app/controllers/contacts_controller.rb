@@ -5,6 +5,7 @@ class ContactsController < ApplicationController
     if user_signed_in?
       @contacts = current_user.contacts.all
     else
+      flash[:info] = "Please log in to access your contacts!"
       redirect_to "/users/sign_in/"
     end
 
