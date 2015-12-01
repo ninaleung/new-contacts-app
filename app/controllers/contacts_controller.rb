@@ -15,9 +15,14 @@ class ContactsController < ApplicationController
       # @contacts = Contact.where("first_name LIKE ? OR last_name LIKE ?", "%#{search_term}, %#{search_term}%" )
       @contacts = Contact.where("first_name LIKE ? OR last_name LIKE ?", "%#{search_term}%", "%#{search_term}%")
     end
+    
     if params[:group]
       @contacts = Group.find_by(name: params[:group]).contacts
     end
+
+    # if params[:group_search]
+    #   @contacts = Group.where("name LIKE ?", "%#{group_search}%").contacts
+    # end
   end
 
   def new
