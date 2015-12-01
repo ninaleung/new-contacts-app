@@ -15,10 +15,7 @@ class ContactsController < ApplicationController
       # @contacts = Contact.where("first_name LIKE ? OR last_name LIKE ?", "%#{search_term}, %#{search_term}%" )
       @contacts = Contact.where("first_name LIKE ? OR last_name LIKE ?", "%#{search_term}%", "%#{search_term}%")
     end
-    puts "==================="
-    p params[:group]
     if params[:group]
-      p Group.find_by(name: params[:group])
       @contacts = Group.find_by(name: params[:group]).contacts
     end
   end
@@ -47,10 +44,11 @@ class ContactsController < ApplicationController
     @contact = Contact.find_by(id: params[:id])
 
     if user_signed_in?
-      render :show
+      @contact
     else
       redirect_to "/users/sign_in/"
     end
+
   end
 
   def edit

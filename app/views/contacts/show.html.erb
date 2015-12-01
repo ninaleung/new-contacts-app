@@ -7,6 +7,13 @@
 <h1>Name: <%= @contact.full_name %></h1>
 <h2>Phone: <%= @contact.japanese_prefix %></h2>
 <h2>Email: <%= @contact.email %></h2>
+<h3>Groups:</h3>
+<ul>
+  <% @contact.groups.each do |group| %>
+  <h4><li><a href="/contacts?group=<%= group.name %>"><%= group.name %></a>
+  </li></h4>
+  <% end %>
+</ul>
 
 <!-- <h3><a href="/contacts/">Back to all contacts</a></h3> -->
 
